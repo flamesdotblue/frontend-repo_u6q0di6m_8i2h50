@@ -1,28 +1,51 @@
-import { useState } from 'react'
+import React from 'react';
+import Hero3D from './components/Hero3D';
+import ProfileCard from './components/ProfileCard';
+import ContactLinks from './components/ContactLinks';
+import Footer from './components/Footer';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Profile data — replace with your details
+  const profile = {
+    avatarUrl:
+      'https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=800&auto=format&fit=crop',
+    name: 'Alex Johnson',
+    designation: 'Senior Product Designer',
+    phone: '+1 234 567 890',
+    whatsapp: '+1 234 567 890',
+    email: 'alex.johnson@example.com',
+    website: 'https://alexjohnson.design',
+    socials: {
+      instagram: 'https://instagram.com/alexj',
+      facebook: 'https://facebook.com/alexj',
+      twitter: 'https://twitter.com/alexj',
+      linkedin: 'https://linkedin.com/in/alexj',
+    },
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Hero3D />
+
+      <main className="px-6">
+        <ProfileCard
+          avatarUrl={profile.avatarUrl}
+          name={profile.name}
+          designation={profile.designation}
+        />
+
+        <ContactLinks
+          phone={profile.phone}
+          whatsapp={profile.whatsapp}
+          email={profile.email}
+          website={profile.website}
+          socials={profile.socials}
+        />
+      </main>
+
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
